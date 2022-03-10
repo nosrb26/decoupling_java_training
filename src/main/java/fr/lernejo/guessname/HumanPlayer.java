@@ -8,11 +8,18 @@ public class HumanPlayer implements Player {
 
     @Override
     public long askNextGuess() {
-        return 0;
+        long result = console.nextLong();
+        console.nextLine();
+        return result;
     }
 
     @Override
     public void respond(boolean lowerOrGreater) {
-
+        if (lowerOrGreater) {
+            logger.log("The number is greater");
+        }
+        else {
+            logger.log("The number is lower");
+        }
     }
 }
