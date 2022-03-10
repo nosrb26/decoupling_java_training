@@ -1,6 +1,7 @@
 package fr.lernejo.guessname;
 
-import fr.lernejo.logger.*;
+import fr.lernejo.logger.Logger;
+import fr.lernejo.logger.LoggerFactory;
 
 public class Simulation {
     private final Logger logger = LoggerFactory.getLogger("simulation");
@@ -13,31 +14,31 @@ public class Simulation {
 
     public void initialize(long numberToGuess) {
         this.numberToGuess = numberToGuess;
-
     }
 
     /**
      * @return true if the player have guessed the right number
      */
     private boolean nextRound() {
-        System.out.println(logger);
-        if (player instanceof HumanPlayer) {
-            System.out.println("Enter a number :");
-            long numberPlayer = ((HumanPlayer) player).console.nextInt();
-            if (numberPlayer == numberToGuess) {
-                return true;
-            }
-            else if (numberPlayer < numberToGuess) {
-                System.out.println("Plus grand");
-            }
-            else {
-                System.out.println("Plus petit");
-            }
+        long guess = player.askNextGuess();
+        logger.log("You guess: " + guess);
+        if (guess == numberToGuess) {
+            logger.log("Congratulation you found the number !");
+            return true;
+        }
+        else if (guess < numberToGuess) {
+            player.respond(true);
+        }
+        else if (guess > numberToGuess) {
+            player.respond(false);
         }
         return false;
     }
 
     public void loopUntilPlayerSucceed() {
-        while (nextRound() == false);
+        boolean loop = true;
+        while (loop) {
+            loop = !nextRound();
+        }
     }
 }

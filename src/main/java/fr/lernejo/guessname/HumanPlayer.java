@@ -1,15 +1,17 @@
 package fr.lernejo.guessname;
-import fr.lernejo.logger.*;
-import java.util.Scanner;
 
-public class HumanPlayer implements Player {
-    public final Logger logger = LoggerFactory.getLogger("Player");
-    public Scanner console = new Scanner(System.in);
+import fr.lernejo.logger.Logger;
+import fr.lernejo.logger.LoggerFactory;
+
+public class HumanPlayer implements Player{
+
+    Logger logger = LoggerFactory.getLogger("player");
+    java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     @Override
     public long askNextGuess() {
-        long result = console.nextLong();
-        console.nextLine();
+        long result = scanner.nextLong();
+        scanner.nextLine();
         return result;
     }
 
