@@ -3,8 +3,6 @@ package fr.lernejo.guessgame;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
-import java.util.Scanner;
-
 public class ComputerPlayer implements Player{
     private final Logger logger = LoggerFactory.getLogger("computer");
     private boolean higher;

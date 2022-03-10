@@ -8,8 +8,8 @@ import java.text.SimpleDateFormat;
 public class Simulation {
 
     private final Logger logger = LoggerFactory.getLogger("simulation");
-    private final Player player;  //TODO add variable type
-    private long numberToGuess; //TODO add variable type
+    private final Player player;
+    private long numberToGuess;
 
     public Simulation(Player player) {
         this.player = player;
@@ -19,11 +19,7 @@ public class Simulation {
         this.numberToGuess = numberToGuess;
     }
 
-    /**
-     * @return true if the player have guessed the right number
-     */
     private boolean nextRound() {
-        //TODO implement me
         long numPlayerAsk = this.player.askNextGuess();
         if (numPlayerAsk == this.numberToGuess) {
             this.logger.log("Player find number");

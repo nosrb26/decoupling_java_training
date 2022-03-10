@@ -1,7 +1,6 @@
 package fr.lernejo.logger;
 
 public class CompositeLogger implements Logger{
-
     private Logger firstLogger;
     private Logger secondLogger;
 
